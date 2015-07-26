@@ -46,7 +46,11 @@ PkgcloudStorage.prototype._handleFile = function _handleFile(req, file, cb) {
 
 		// ensuring existence of container
 		that.client.createContainer({
-			'name': params.container
+			{
+				Bucket: {
+					'name': params.container
+				}
+			}
 		}, function(err, container) {
 
 			// need to check for an error and if the container is null (can really happen)
